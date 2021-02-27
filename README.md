@@ -16,7 +16,7 @@ Use the sqlite and change your database config to
 
 # Then run the following commands
 
-- $ cd blog/
+- $ cd folder_name/
 - $ pipenv shell
 - $ pipenv install -r requirements.txt
 - $ export FLASK_APP=server.py
