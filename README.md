@@ -11,7 +11,7 @@ If on windows make changes to the config.py
 Use the sqlite and change your database config to
 
  "
- SQLALCHEMY_DATABASE_URI = os.path.join('sqlite:///temp/app.db')
+ SQLALCHEMY_DATABASE_URI = os.path.join(BASEDIR,'sqlite:///temp/app.db')
  "
 
 # Then run the following commands
