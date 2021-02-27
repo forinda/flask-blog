@@ -114,16 +114,16 @@ def sign_out():
 def new_post():
     form = NewBlogForm()
     if form.validate_on_submit():
-        post = Blog(title=form.title.data, subtitle=form.subtitle.data,body=form.body.data)
-        post.author_id = current_user.id
-        # post=Blog()
-        # post.title = form.title.data
-        # post.subtitle = form.subtitle.data
-        # post.body = form.body.data
-        # post.author_id = current_user.id
+        blog = Blog(title=form.title.data, subtitle=form.subtitle.data,body=form.body.data)
+        blog.author_id = current_user.id
+        # blog=Blog()
+        # blog.title = form.title.data
+        # blog.subtitle = form.subtitle.data
+        # blog.body = form.body.data
+        # blog.author_id = current_user.id
         try:
-            print(post)
-            db.session.add(post)
+            print(blog)
+            db.session.add(blog)
             db.session.commit()
             flash('Blog created successfully', 'success')
             return redirect(url_for('home.homepage'))
@@ -140,19 +140,19 @@ def update_blog(id):
     form = UpdateBlogForm()
     blog = Blog.query.filter_by(id=id).first()
     if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.subtitle = form.subtitle.data
+        blog.body = form.body.data
         try:
-            blog.title = form.title.data
-            blog.subtitle = form.subtitle.data
-            blog.body = form.body.data
             db.session.commit()
-            flash("Blog updated successfully",category='msg-success')
+            flash("Blog updated successfully",category='successs')
             return redirect(url_for('home.homepage'))
         except Exception as e:
-            flash("Blog updated successfully",category='msg-success')
-            return redirect(url_for('home.update_blog'))
+            flash("Could not update the blog",category='danger')
+            return redirect(url_for('home.my_blogs'))
     if request.method == 'GET':
-        form.title.data = blog.body
-        form.subtitle.data = blog.body
+        form.title.data = blog.title
+        form.subtitle.data = blog.subtitle
         form.body.data = blog.body
         # form.done.data = todo.done
     return render_template('update.html', form=form, title=title)
