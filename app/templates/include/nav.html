@@ -1,0 +1,19 @@
+<div class="header">
+  <div>
+    <a class="logo" href="{{ url_for('home.homepage') }}">Myblog</a>
+  </div>
+
+  {% if current_user.is_authenticated %}
+  <div class="auth">
+    <a href="{{ url_for('home.profile') }}">Profile</a>
+    <a href="{{ url_for('home.new_post') }}">Add blog</a>
+    <a href="{{ url_for('home.sign_out') }}">Logout</a>
+    <a href="{{ url_for('home.my_blogs') }}">Blogs</a>
+  </div>
+  {% else %}
+  <div class="auth2">
+    <a href="{{ url_for('home.sign_up') }}">Sign up</a>
+    <a href="{{ url_for('home.sign_in') }}">Sign In</a>
+  </div>
+  {% endif %}
+</div>

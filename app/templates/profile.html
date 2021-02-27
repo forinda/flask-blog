@@ -1,0 +1,30 @@
+{% include 'base.html' %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<div class="container">
+    <div class="profile">
+        <div class="profile_name_container">
+            <div class="profile_pic">
+                <span>{{current_user.username[0]}}</span>
+            </div>
+        </div>
+        <div class="body__profile">
+            <div><strong>Username: </strong>&nbsp;{{current_user.username}}</div>
+            <div><strong>Email: </strong>&nbsp;{{current_user.email}}</div>
+            <hr>
+                <p>
+                    <span>
+                        <a href="{{ url_for('home.update_profile') }}">Edit profile</a>
+                    </span>
+                  </p>
+        </div>
+
+    </div>
+   
+</div>
+{% else %}
+    <h1 style="text-align: center;">Hello Basic User</h1>
+{% endif %}
+   
+{% endblock content %}

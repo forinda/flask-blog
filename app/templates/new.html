@@ -1,0 +1,41 @@
+{% include 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center;">New blog</h1>
+<div class="form">
+    <form action="{{ url_for('home.new_post') }}" method="post">
+        {{form.hidden_tag()}}
+        <p>
+            {{form.title.label}}
+            {{form.title}}
+            {% for error in form.title.errors %}
+        <div style="color: red;">
+            {{error}}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{form.subtitle.label}}
+            {{form.subtitle}}
+            {% for error in form.subtitle.errors %}
+        <div style="color: red;">
+            {{error}}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{form.body.label}}
+            {{form.body()}}
+            {% for error in form.body.errors %}
+        <div style="color: red;">
+            {{error}}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{form.submit(size=30)}}
+        </p>
+
+    </form>
+</div>
+{% endblock content %}

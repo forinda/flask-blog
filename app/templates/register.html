@@ -1,0 +1,52 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center;">Sign Up</h1>
+    <div class="form">
+        <form action="{{ url_for('home.sign_up') }}" method="post">
+            {{form.hidden_tag()}}
+            <p>
+                {{form.username.label}}
+                {{form.username(placeholder='John Doe', autofocus=true)}} <br>
+                {% for error in form.username.errors %}
+                    <span style="color: red;">
+                        {{error}}
+                    </span>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.email.label}}
+                {{form.email(placeholder='example@gmail.com', autofocus=true)}} <br>
+                {% for error in form.email.errors %}
+                    <span style="color: red;">
+                        {{error}}
+                    </span>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.password.label}}
+                {{form.password(placeholder='********')}} <br>
+                {% for error in form.password.errors %}
+                    <div style="color: red;">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.password1.label}}
+                {{form.password1(placeholder='********')}}
+                {% for error in form.password1.errors %}
+                    <div style="color: red;">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{form.submit(size=30)}}
+            </p>
+            <p>
+                <small>Don't have an account? <a href="{{ url_for('home.sign_in') }}">Sign In</a></small>
+            </p>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% include 'base.html' %} {% block content %}
+
+<div class="container">
+  {% with blogs=blogs %}
+  {% if blogs %}
+  {% for blog in blogs %}
+  <div class="blogs">
+    <h1>{{blog.title}}</h1>
+
+    {% if blog.subtitle %}
+    <h3>{{blog.subtitle}}</h3>
+    {% endif %}
+    <p>{{blog.body | safe}}</p>
+    <hr />
+    <p>
+      <span>
+        {{blog.time_created.strftime("%Y-%m-%d")}} at {{blog.time_created.strftime("%H:%m:%S")}}
+      </span>
+      <span>
+        Written by: <strong>{{ blog.author.username}}</strong>
+      </span>
+    </p>
+ 
+  </div>
+  <br>
+  {% endfor %}
+  {% else %}
+  <h1>No blog posts</h1>
+  {% endif %}
+  {% endwith %}
+  
+ 
+</div>
+{% endblock content %}

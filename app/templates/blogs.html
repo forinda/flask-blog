@@ -1,0 +1,34 @@
+{% include 'base.html' %} {% block content %}
+
+<div class="container">
+    {% with blogs=blogs %}
+        {% if blogs %}
+         {% for blog in blogs %}
+            <div class="blogs">
+                <h1>{{blog.title}}</h1>
+                {% if blog.subtitle %}
+                    <h3>{{blog.subtitle}}</h3>
+                {% endif %}
+                <p>
+                    {{blog.body | safe }}
+                </p>
+                <hr>
+                <p>
+                    <span>
+                      {{blog.time_created.strftime("%Y-%m-%d")}}
+                    </span>
+                    <span>
+                        <a href="{{ url_for('home.delete', id=blog.id) }}">Delete</a>
+                        <a href="{{ url_for('home.update_blog', id=blog.id) }}">update</a>
+                    </span>
+                  </p>
+                  <hr>
+            </div>
+         {% endfor %}
+        {% elif not blogs %}
+            <h1>You don't have any blog posts</h1>
+        {% endif %}
+    {% endwith %}
+ 
+</div>
+{% endblock content %}
