@@ -8,7 +8,7 @@ with open(f'{BASDIR}/password.txt', 'r', encoding='utf-8') as f:
     password = f.readline()
 
 
-# SQLALCHEMY_DATABASE_URI = os.path.join('sqlite:///temp/app.db')
+# SQLALCHEMY_DATABASE_URI = os.path.join(BASEDIR,'sqlite:///temp/app.db')
 
 class DevelopmentConfig(object):
     """ Write your development configuration here"""
