@@ -16,12 +16,12 @@ Use the sqlite and change your database config to
 
 # Then run the following commands
 
-$ cd blog/
-$ pipenv shell
-$ pipenv install -r requirements.txt
-$ export FLASK_APP=server.py
-$ flask db init 
-$ flask db migrate -m "Creating initial tables"
-$ flask db upgrade
-$ python server.py
-$ 
+- $ cd blog/
+- $ pipenv shell
+- $ pipenv install -r requirements.txt
+- $ export FLASK_APP=server.py
+- $ flask db init 
+- $ flask db migrate -m "Creating initial tables"
+- $ flask db upgrade
+- $ python server.py
+- $ 
