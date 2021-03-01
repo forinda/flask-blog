@@ -14,10 +14,12 @@ from flask_login import (
     )
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from datetime import timedelta
 from app.config import config
 
 app = Flask(__name__)
 app.config.from_object(config['production'])
+app.permanent_session_lifetime = timedelta(days=5)
 db = SQLAlchemy(app)
 migrate = Migrate(app)
 login_manager = LoginManager(app)
