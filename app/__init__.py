@@ -13,13 +13,13 @@ from flask_login import (
     logout_user
     )
 from flask_sqlalchemy import SQLAlchemy
-# from flask_moment import Moment
+from flask_migrate import Migrate
 from app.config import config
 
 app = Flask(__name__)
-app.config.from_object(config['development'])
+app.config.from_object(config['production'])
 db = SQLAlchemy(app)
-# moment = Moment(app)
+migrate = Migrate(app)
 login_manager = LoginManager(app)
 
 

@@ -29,7 +29,6 @@ home = Blueprint(
 )
 
 @home.route('/')
-@login_required
 def homepage():
     blogs = Blog.query.all()
     return render_template('index.html', blogs=blogs)
